@@ -1,0 +1,233 @@
+body {
+    margin: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    gap: 110px;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.elemBox {
+    border: 0px solid white;
+    position: relative;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50px;
+}
+
+#logo {
+    position: relative;
+    width: 220px;
+    left: -.3vw;
+}
+
+span {
+    font-size: 32px;
+    font-weight: 310;
+    left: .5vw;
+    color: #ffffff;
+    letter-spacing: .02em;
+}
+
+img {
+    width: 100%;
+}
+
+.searchEngine {
+    background-color: rgba(255, 255, 255,0.1);
+    display: flex;
+    justify-content: center;
+    padding: 40px 30px;
+    width: 540px;
+    color: #0f172a;
+    margin: 70px 0px 0px 0;
+    border-radius: 1em
+}
+
+.inputField {
+    width: 85%;
+    height: 30px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    font-size: 17.4px;
+    font-weight: 300;
+    padding: 0 5px;
+}
+.inputField:focus {
+    outline: none !important;
+}
+
+.submitBtn {
+    width: 20%;
+    color: #ffffff;
+    background-color: #4C43FF;
+    border: 1.7px solid #4C43FF;
+    padding: 6px 12px;
+    border-left: transparent;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    margin-top: -.1px;
+    letter-spacing: .08em;
+}
+.submitBtn:hover {
+    cursor: pointer;
+    letter-spacing: .1em;
+}
+
+.output {
+    border: 0px solid white;
+    width: 95vw;
+    height: auto;
+    margin: 0px 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem;
+    padding: 10px;
+}
+
+.article {
+    background-color: #ffffff;
+    height: 250px;
+    border: 2px solid black;
+    padding: 24px 32px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    border-radius: 0.25rem;
+    border: none !important;
+    transition: 0.2s ease-in-out all;
+    
+}
+
+.article h4{
+    margin: 0 0 20px 0;
+    font-size: 25px;
+    font-weight: 450;
+    text-transform: capitalize;
+    color: rgba(34, 34, 34,1);
+}
+.article h4 a {  /* This <a> tag is in Js */
+    text-decoration: none;
+    color: rgba(34, 34, 34,1);
+}
+
+.article p {
+    display: block;
+    border: 0px solid black;
+   line-height: 1.75;
+   height: 140px;
+   overflow: hidden;
+   overflow-wrap: break-word;
+}
+.article p a {  /* This <a> tag is in Js */
+    text-decoration: none;
+    color: rgba(34, 34, 34, 1);
+}
+
+.article:hover {
+    cursor: pointer;
+    background-color: #222;
+}
+.article:hover h4 a {
+    color: #ffffff;
+}
+.article:hover p a {
+    color: #64748b;
+}
+
+@media (max-width : 1040px) {
+    .output {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width : 540px) {
+    body {
+        gap: 40px;
+        overflow-x: hidden;
+    }
+    .searchEngine {
+        width: 115%;
+        padding: 10px 10px;
+        margin-top: 50px;
+        background-color: transparent;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .inputField {
+        width: 110%;
+    }
+    .inputField:focus {
+        outline: invert;
+    }
+
+    .submitBtn {
+        width: 35%;
+        height: 50%;
+        padding: 6px 6px;
+        border-radius: 0.25rem;
+    }
+
+    .output {
+        grid-template-columns: 1fr;
+    }
+}
+ 
+/* Wikipedia's search value(inputField's text) */
+.searchmatch {  
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(34, 34, 3, 0.9);
+}
+
+.article:hover .searchmatch {
+    color: #64748b;
+}
+
+.load-bar {
+    position: fixed;
+    margin: 1px auto auto -10px;
+    min-width: 110%;
+    height: 3px;
+    background-color: #fdba2c;
+    top: -1px;
+    background-color: transparent;
+    display: none;
+}
+.bar {
+  content: "";
+  display: inline;
+  position: absolute;
+  width: 0;
+  height: 100%;
+  left: 50%;
+  text-align: center;
+  border-radius: 1rem;
+}
+.bar:nth-child(1) {
+  background-color: #4C43FF; 
+  animation: loading 3s linear infinite;
+}
+.bar:nth-child(2) {
+  background-color: #ffc107;
+  animation: loading 3s linear 1s infinite;
+}
+.bar:nth-child(3) {
+  background-color: #4C43FF;
+  animation: loading 3s linear 2s infinite;
+}
+@keyframes loading {
+    from {left: 0; width: 0;z-index:100;}
+    33.3333% {left: 0; width: 100%;z-index: 10;}
+    to {left: 0; width: 100%;}
+}
